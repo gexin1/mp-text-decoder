@@ -1,5 +1,17 @@
+/**
+ * 用于二进制输入的轻量级 UTF-8 解码器。
+ *
+ * @remarks
+ * 非法的 UTF-8 字节序列会被替换为 Unicode 替换字符（`U+FFFD`）。
+ * 对于被截断的不完整序列，解码会在截断边界处停止。
+ */
 export class mpTextDecoder {
-    // 仅支持 UTF-8 解码，且对非法输入进行容错处理
+    /**
+     * 将 UTF-8 字节数据解码为 JavaScript 字符串。
+     *
+     * @param input - 需要解码的 UTF-8 数据，支持 `ArrayBuffer` 或 `Uint8Array`。
+     * @returns 解码后的字符串。
+     */
     decode(input: ArrayBuffer | Uint8Array): string {
         const bytes = input instanceof Uint8Array ? input : new Uint8Array(input);
         let result = '';

@@ -1,7 +1,23 @@
 {
   "name": "mp-text-decoder",
-  "module": "index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun run build.ts",
+    "prepack": "bun run build",
+    "test": "bun test"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
