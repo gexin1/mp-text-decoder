@@ -7,7 +7,7 @@
  */
 const REPLACEMENT_CHARACTER = String.fromCharCode(0xfffd);
 
-export class mpTextDecoder {
+export class MpTextDecoder {
     /**
      * 将 UTF-8 字节数据解码为 JavaScript 字符串。
      *

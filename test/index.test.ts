@@ -1,9 +1,9 @@
 import { describe, expect, test } from 'bun:test';
 
-import { mpTextDecoder } from '../src/index';
+import { MpTextDecoder } from '../src/index';
 
 describe('mpTextDecoder', () => {
-    const decoder = new mpTextDecoder();
+    const decoder = new MpTextDecoder();
 
     test('可以解码 ASCII 文本', () => {
         const bytes = new Uint8Array([72, 101, 108, 108, 111]);
