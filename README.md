@@ -23,9 +23,9 @@ npm install mp-text-decoder
 ## 使用示例
 
 ```ts
-import { mpTextDecoder } from 'mp-text-decoder';
+import { MpTextDecoder } from 'mp-text-decoder';
 
-const decoder = new mpTextDecoder();
+const decoder = new MpTextDecoder();
 
 const text = decoder.decode(
   new Uint8Array([0xe4, 0xbd, 0xa0, 0xe5, 0xa5, 0xbd, 0xf0, 0x9f, 0x98, 0x80]),
@@ -39,9 +39,9 @@ console.log(text); // 你好😀
 下面这个例子适合把小程序收到的二进制 chunk 解成字符串，再交给 SSE 解析逻辑处理：
 
 ```ts
-import { mpTextDecoder } from 'mp-text-decoder';
+import { MpTextDecoder } from 'mp-text-decoder';
 
-const decoder = new mpTextDecoder();
+const decoder = new MpTextDecoder();
 let buffer = '';
 
 function handleChunk(chunk: ArrayBuffer) {
@@ -62,7 +62,7 @@ function handleChunk(chunk: ArrayBuffer) {
 
 ## API
 
-### `new mpTextDecoder()`
+### `new MpTextDecoder()`
 
 创建一个 UTF-8 解码器实例。
 

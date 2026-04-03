@@ -2,7 +2,7 @@ import { describe, expect, test } from 'bun:test';
 
 import { MpTextDecoder } from '../src/index';
 
-describe('mpTextDecoder', () => {
+describe('MpTextDecoder', () => {
     const decoder = new MpTextDecoder();
 
     test('可以解码 ASCII 文本', () => {
