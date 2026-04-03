@@ -1,6 +1,6 @@
 {
   "name": "mp-text-decoder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "WeChat Mini Program TextDecoder.decode polyfill for SSE and UTF-8 decoding, supports Chinese, emoji, and other multi-byte characters.",
   "keywords": [
     "sse",
@@ -33,6 +33,7 @@
     "UTF-8",
     "中文"
   ],
+  "homepage": "https://github.com/gexin1/mp-text-decoder",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
