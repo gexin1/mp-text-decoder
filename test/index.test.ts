@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
-import { mpTextDecoder } from './index';
+import { mpTextDecoder } from '../src/index';
 
 describe('mpTextDecoder', () => {
     const decoder = new mpTextDecoder();
