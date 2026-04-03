@@ -5,6 +5,8 @@
  * 非法的 UTF-8 字节序列会被替换为 Unicode 替换字符（`U+FFFD`）。
  * 对于被截断的不完整序列，解码会在截断边界处停止。
  */
+const REPLACEMENT_CHARACTER = String.fromCharCode(0xfffd);
+
 export class mpTextDecoder {
     /**
      * 将 UTF-8 字节数据解码为 JavaScript 字符串。
@@ -33,7 +35,7 @@ export class mpTextDecoder {
                 const b1 = bytes[i + 1]!;
                 if ((b1 & 0xc0) !== 0x80) {
                     // 非法续字节，跳过
-                    result += '\uFFFD';
+                    result += REPLACEMENT_CHARACTER;
                     i += 1;
                     continue;
                 }
@@ -49,14 +51,14 @@ export class mpTextDecoder {
                 const b1 = bytes[i + 1]!;
                 const b2 = bytes[i + 2]!;
                 if ((b1 & 0xc0) !== 0x80 || (b2 & 0xc0) !== 0x80) {
-                    result += '\uFFFD';
+                    result += REPLACEMENT_CHARACTER;
                     i += 1;
                     continue;
                 }
                 const codePoint = ((byte & 0x0f) << 12) | ((b1 & 0x3f) << 6) | (b2 & 0x3f);
                 // 排除 surrogate 范围（U+D800 ~ U+DFFF）
                 if (codePoint >= 0xd800 && codePoint <= 0xdfff) {
-                    result += '\uFFFD';
+                    result += REPLACEMENT_CHARACTER;
                 } else {
                     result += String.fromCharCode(codePoint);
                 }
@@ -71,7 +73,7 @@ export class mpTextDecoder {
                 const b2 = bytes[i + 2]!;
                 const b3 = bytes[i + 3]!;
                 if ((b1 & 0xc0) !== 0x80 || (b2 & 0xc0) !== 0x80 || (b3 & 0xc0) !== 0x80) {
-                    result += '\uFFFD';
+                    result += REPLACEMENT_CHARACTER;
                     i += 1;
                     continue;
                 }
@@ -82,14 +84,14 @@ export class mpTextDecoder {
                     const offset = codePoint - 0x10000;
                     result += String.fromCharCode(0xd800 + (offset >> 10), 0xdc00 + (offset & 0x3ff));
                 } else {
-                    result += '\uFFFD';
+                    result += REPLACEMENT_CHARACTER;
                 }
                 i += 4;
                 continue;
             }
 
             // 非法首字节，跳过并替换为 replacement character
-            result += '\uFFFD';
+            result += REPLACEMENT_CHARACTER;
             i += 1;
         }
 
